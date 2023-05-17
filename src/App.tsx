@@ -6,7 +6,7 @@ import Table from './components/Table.comp';
 
 function App() {
   return (
-    <div className='min-h-screen flex bg-blue-50'>
+    <div className='min-h-screen flex bg-lighter_blue'>
       <Sidebar />
       <div className='w-full'>
         <Navbar />
@@ -19,11 +19,8 @@ function App() {
             />
           </div>
 
-          <div className='flex space-x-10'>
-            <div>
-              <h2 className='uppercase font-semibold'>categories</h2>
-              <Category />
-            </div>
+          <div className='flex mt-4'>
+            <Category />
             <Table />
           </div>
         </div>
