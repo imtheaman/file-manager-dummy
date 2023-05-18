@@ -12,7 +12,7 @@ function App() {
         <Navbar />
         <div className='mr-20 p-10'>
           <div className='flex'>
-            <div className='flex-1'></div>
+            <div className='flex-1'></div> {/* dummy div to have some space */}
             <Search
               className='flex-1'
               placeholder={'Search by name'}

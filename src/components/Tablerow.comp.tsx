@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TableData} from './Table.comp';
 import moment from 'moment';
-import TableAction from './TableAction.comp';
 import {TbEdit} from 'react-icons/tb';
 import {IoTrashBin} from 'react-icons/io5';
+import Modal from './Modal.comp';
 
 const btn_color = '#338BA8';
 
 const Tablerow: React.FC<{data: TableData}> = ({
   data: {ModifietAt, Name, Owner, Type, file, link, preview_image, id}
 }) => {
+  const [showAction, setShowAction] = useState<boolean>(false);
+  const actionHandler = () => {
+    console.log('deleted');
+    setShowAction(false);
+  };
   return (
     <tr>
       <th>
@@ -49,14 +54,26 @@ const Tablerow: React.FC<{data: TableData}> = ({
       <td className='text-light_blue'>Label 1</td>
       <td className='text-light_blue'>{Type}</td>
       <td className='text-light_blue'>{moment(ModifietAt).format('ll')}</td>
-      <td className='space-x-4'>
-        <button>
+      <td className='relative space-x-4'>
+        {showAction ? (
+          <Modal
+            title={
+              <>
+                <IoTrashBin />
+                <p>Remove</p>
+              </>
+            }
+            handleFalse={() => setShowAction(false)}
+            handleTrue={actionHandler}
+          />
+        ) : null}
+        <button onClick={() => {}}>
           <TbEdit
             size={20}
             color={btn_color}
           />
         </button>
-        <button>
+        <button onClick={() => setShowAction(true)}>
           <IoTrashBin
             size={20}
             color={btn_color}
